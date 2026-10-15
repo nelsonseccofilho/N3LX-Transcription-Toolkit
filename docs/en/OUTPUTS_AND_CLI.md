@@ -21,6 +21,25 @@ whisperxgpu ".\recording.mkv" --no-diarize
 whisperxgpu ".\recording.mkv" --no-preload-align
 ```
 
+## Single-file and batch commands actually used in PowerShell 7
+
+The following commands are supported by the currently configured **local AMD GPU application**. A fresh clone of this documentation-only repository does not install `whisperxgpu`.
+
+**Single file:**
+
+```powershell
+whisperxgpu ".\FILENAME.mkv" --model large-v3 --device vulkan --diarize --output_dir ".\transcricoes\" --output_format json --language pt --threads 6
+```
+
+**All `*.mkv` files in the current directory (sequential):**
+
+```powershell
+Get-ChildItem -File -Filter *.mkv | Sort-Object Name | ForEach-Object { Write-Host "`nTRANSCREVENDO: $($_.Name)" -ForegroundColor Cyan; whisperxgpu $_.FullName --model large-v3 --device vulkan --diarize --output_dir ".\transcricoes" --output_format json --language pt --threads 6; if ($LASTEXITCODE -ne 0) { Write-Warning "Falha ao transcrever: $($_.Name)" } }
+```
+
+This loop is a PowerShell wrapper, not an implemented native wildcard/batch feature in the application. It does not recurse into folders or skip previously processed recordings. It prints a warning for each nonzero exit code and then continues; it does not provide a final aggregate report. Paste either example separately: joining both commands can accidentally pass `6Get-ChildItem` as the thread value.
+
+See [batch transcription guide](BATCH_TRANSCRIPTION.md) for prerequisites, edge cases, and output examples.
 ## Flags confirmed in the v1.0.0 local script
 
 | Argument | Default | Notes |
