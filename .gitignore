@@ -1,0 +1,56 @@
+# Virtual environments and Python artifacts
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.token
+*.key
+*.pem
+local-config.*
+
+# Media and runtime output (private by default)
+*.mkv
+*.mp4
+*.mp3
+*.wav
+*.flac
+*.m4a
+*.webm
+transcriptions/
+transcricoes/
+outputs/
+benchmarks/private/
+logs/
+*.processamento.log
+*.integrado.json
+*.qualidade.json
+*.diarizacao.json
+*.whisper-raw.json
+
+# Local model caches / binaries
+models/
+model-cache/
+*.onnx
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.dll
+*.exe
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
