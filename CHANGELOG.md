@@ -1,18 +1,20 @@
 # Changelog
 
-All notable changes will be documented here. Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/).
+All notable changes are tracked using [Conventional Commits](https://www.conventionalcommits.org/).
 
-The public repository is in **documentation bootstrap** status. Its documentation describes a locally validated reference implementation; it does not yet constitute a reproducible software release.
+**Public status: documentation bootstrap.** The local reference application's v1.0.0 validation is not a public release or public installer.
 
 ## Unreleased
 
 ### Documentation
-- Establish an English-first README and Portuguese entry point.
-- Separate CPU and AMD GPU workflows.
-- Record benchmark evidence, output profiles, known limitations and safety rules.
-- Publish contributing, security and ignore-file guidance.
+- Document why the Toolkit was created to support [AI-Assisted Design Engineering Operating System](https://github.com/nelsonseccofilho/ai-assisted-design-engineering-operating-system), and the AMD/no-CUDA motivation.
+- Publish reference hardware and explicitly distinguish media throughput from CPU/GPU speedup.
+- Explain GPU stage boundaries, Python environment isolation and dependencies.
+- Consolidate engineering history, CLI/output contracts, validation and reproduction gates.
+- Provide an English-first README, a Brazilian Portuguese entry point, CPU setup and troubleshooting.
+- Establish security, contributing, ignore-file and public release requirements.
 
 ### Pending
-- Decide the project's code and documentation licenses.
-- Audit and publish sanitized installation scripts and sources.
-- Verify clean-machine setup and publish reproducible releases.
+- Review/publish project and third-party licenses.
+- Audit and publish dependency locks, authorized model acquisition, installation scripts and source.
+- Pass independent clean-install checks, integration QA and accessible documentation review before a public software release.
