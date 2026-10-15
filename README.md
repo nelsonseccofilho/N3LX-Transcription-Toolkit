@@ -74,6 +74,8 @@ The app defaults to the **Normal** output profile, which saves only an integrate
 
 **Do not run this command on a fresh clone**: the GPU app and model installation procedure are not yet distributed. See [the full dependency inventory](docs/en/DEPENDENCIES.md).
 
+For the exact single-media and sequential PowerShell batch commands used on the reference PC, see [Windows batch transcription](docs/en/BATCH_TRANSCRIPTION.md). The batch run processes only current-folder MKV files and does not yet skip completed work.
+
 ## What this toolkit is—and is not
 
 It is a **local transcription tool**, not a source of absolute truth. Source recordings are primary evidence; transcripts help people navigate and review them. A word-alignment score does not measure transcription accuracy, and `SPEAKER_00` does not identify a person by name.
@@ -89,6 +91,7 @@ This repository does not contain client data, private recordings, or unredacted 
 - [Architecture and data flow](docs/en/ARCHITECTURE.md)
 - [Dependencies and what remains to lock](docs/en/DEPENDENCIES.md)
 - [JSON outputs and CLI contract](docs/en/OUTPUTS_AND_CLI.md)
+- [Single-file and batch transcription commands](docs/en/BATCH_TRANSCRIPTION.md)
 - [Reproducibility and clean-install plan](docs/en/REPRODUCIBILITY.md)
 - [Benchmarks and limitations](docs/en/VALIDATION.md)
 - [Troubleshooting](docs/en/TROUBLESHOOTING.md)

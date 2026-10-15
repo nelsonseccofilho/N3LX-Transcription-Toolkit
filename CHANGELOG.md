@@ -7,6 +7,7 @@ All notable changes are tracked using [Conventional Commits](https://www.convent
 ## Unreleased
 
 ### Documentation
+- Document the canonical single-media and sequential MKV batch commands tested on the local AMD GPU reference, with limitations and PowerShell troubleshooting.
 - Document why the Toolkit was created to support [AI-Assisted Design Engineering Operating System](https://github.com/nelsonseccofilho/ai-assisted-design-engineering-operating-system), and the AMD/no-CUDA motivation.
 - Publish reference hardware and explicitly distinguish media throughput from CPU/GPU speedup.
 - Explain GPU stage boundaries, Python environment isolation and dependencies.

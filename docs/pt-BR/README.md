@@ -24,6 +24,23 @@ O Operating System motivou essa solução, mas **não é obrigatório para usar 
 
 Uma mídia de **18 minutos** foi processada em **7 minutos e 29 segundos**, com 1.805 palavras alinhadas, reconhecimento Vulkan confirmado e alinhamento/diarização DirectML confirmados. Isso representa cerca de **2,4 vezes a velocidade do tempo real**, mas **não** equivale a um benchmark CPU contra GPU com configurações idênticas.
 
+## Comandos usados na implementação local
+
+Estes exemplos funcionam **apenas após a instalação e configuração do aplicativo local GPU**. O repositório público ainda não distribui essa instalação.
+
+**Transcrever um arquivo:**
+
+```powershell
+whisperxgpu ".\FILENAME.mkv" --model large-v3 --device vulkan --diarize --output_dir ".\transcricoes\" --output_format json --language pt --threads 6
+```
+
+**Transcrever todos os arquivos `.mkv` da pasta atual, em sequência:**
+
+```powershell
+Get-ChildItem -File -Filter *.mkv | Sort-Object Name | ForEach-Object { Write-Host "`nTRANSCREVENDO: $($_.Name)" -ForegroundColor Cyan; whisperxgpu $_.FullName --model large-v3 --device vulkan --diarize --output_dir ".\transcricoes" --output_format json --language pt --threads 6; if ($LASTEXITCODE -ne 0) { Write-Warning "Falha ao transcrever: $($_.Name)" } }
+```
+
+**Atenção:** o comando em lote não percorre subpastas, não pula arquivos já transcritos e não monitora novas mídias. Cada execução poderá criar novos JSONs com timestamp. Não cole os dois comandos juntos: execute uma linha completa por vez. Mais detalhes no [guia de processamento em lote (inglês)](../en/BATCH_TRANSCRIPTION.md).
 ## Escolha seu caminho
 
 - [Instalação CPU — WhisperX (em inglês)](../en/CPU_SETUP.md)
