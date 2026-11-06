@@ -73,3 +73,7 @@ A prévia agora contém QA unificado, monitor e exportação JSON. Para configur
 ### Recuperação do worker Community-1
 
 Um worker anterior foi recuperado e adaptado para emitir intervalos regulares e exclusivos, conforme o QA. O contrato foi exercitado com dados sintéticos, mas a versão reconstruída **ainda não foi verificada na GPU real**. Preserve o worker local aprovado. [Contrato e validação](../en/DIARIZATION_WORKER_CONTRACT.md).
+
+### Equalização sem alterar o aplicativo
+
+O arquivo final instalado não foi recuperado integralmente. O [auditor local em modo somente leitura](AUDITORIA_WORKER_LOCAL.md) compara hashes SHA-256 e estruturas das funções sem executar o worker nem divulgar a gravação. A instalação local aprovada permanece intocada.

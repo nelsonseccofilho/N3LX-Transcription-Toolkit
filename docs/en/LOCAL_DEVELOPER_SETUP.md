@@ -79,3 +79,7 @@ Before a public installable release: recover and audit the exact working externa
 The default path is now `src/n3lx_toolkit/diarizacao_directml_worker.py`. Override `N3LX_ONNX_PYANNOTE_REPO` (checkout containing `onnx_pyannote.py`) and `N3LX_DIARIZATION_MODELS` (segmentation, embedding, Community-1 config and PLDA files) as needed, using native Windows paths. To retain the already validated local worker, set `N3LX_DIARIZATION_WORKER` explicitly. The QA cache fingerprint tracks the worker code and the ONNX/PLDA dependencies, so changes create distinct cached evidence.
 
 The published candidate's interval/output schema passed mocked tests. **Actual DirectML inference and compatibility with the last Windows worker are not yet tested for this version.** See the [worker contract](DIARIZATION_WORKER_CONTRACT.md).
+
+## Read-only worker comparison before any replacement
+
+Use [scripts/auditar_worker_local.py](../../scripts/auditar_worker_local.py) to compare the installed worker with the candidate. The auditor reads only two Python sources, computes SHA-256 and AST-derived structural results, and does not import/execute either file or contact the network. Use [the guided local command](../pt-BR/AUDITORIA_WORKER_LOCAL.md) to download the public candidate and the tool into a temporary directory and inspect the existing local file. **Do not deploy the reconstructed worker because of a structural match alone.**

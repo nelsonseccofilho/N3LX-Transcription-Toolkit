@@ -40,3 +40,7 @@ Model weights and the third-party ONNX pipeline are **not copied into the public
 **Pending:** byte-for-byte comparison with the exact final Windows worker; standalone GPU `--check`; an authorized WAV on the actual AMD/DirectML runtime; parity of speaker turns against the installed reference; clean-machine setup and legal/third-party dependency review. Earlier GitHub Actions runs were blocked before a runner was assigned; hosted CI status must be checked independently. Synthetic testing is **not** hardware proof.
 
 No installation scripts should replace the known-good local worker automatically.
+
+## Next-cycle equalization evidence (read-only)
+
+The source archive contains an **older** worker lacking `exclusive_intervals`; the exact final installed file is not available in the recovered archive. To avoid silently declaring parity, the Toolkit now includes `scripts/auditar_worker_local.py`, with synthetic tests for identical files, missing exclusive data, non-semantic differences and invalid Python. The auditor emits sanitized SHA-256 hashes and changed top-level function names, **not** private source lines or filesystem paths. Source checks are only an evidence collection step, not a GPU integration test. [Run instructions (PT-BR)](../pt-BR/AUDITORIA_WORKER_LOCAL.md).

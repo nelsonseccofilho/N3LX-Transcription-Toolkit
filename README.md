@@ -128,3 +128,7 @@ transcrever_pasta
 ### Recovered diarization worker — candidate
 
 An earlier first-party worker was recovered and adapted to the QA contract, including regular and exclusive Community-1 intervals. Its synthetic contract tests pass; **GPU behavior and equivalence to the final installed worker are not yet confirmed**. [Details](docs/en/DIARIZATION_WORKER_CONTRACT.md).
+
+### Read-only comparison with the installed Windows worker
+
+The exact production worker is **not included** among recovered source archives. A [safe local audit utility](scripts/auditar_worker_local.py) compares its SHA-256 and Python function structure with the published candidate without importing the worker, reading media, or modifying local files. It does **not** establish GPU or behavioral parity. [Portuguese one-command instructions](docs/pt-BR/AUDITORIA_WORKER_LOCAL.md).

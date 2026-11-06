@@ -50,3 +50,7 @@ Ownership of these outstanding tasks remains with this repository; the related o
 ## Recovered worker gate (November 2026)
 
 An archived first-party DirectML worker was recovered, and a **candidate** was adapted to emit both regular and exclusive Community-1 intervals and to validate exclusive non-overlap. Contract tests passed using synthetic, mocked data only. **Before declaring it the hardware-validated version**, compare with the final installed Windows worker and verify a real authorized WAV, model revisions, provider/operator evidence, fail-closed behavior, external dependency licenses and parity against the preexisting approved output. Do not overwrite the working local version on a documentation-only or synthetic PASS.
+
+## Source equality gate
+
+Before replacing the validated Windows worker, collect the read-only `auditar_worker_local.py` report. If hashes differ, review changed function semantics and confirm the full regular/exclusive JSON on a controlled authorized WAV. Even matching hashes only proves **source identity**; it does not prove model revisions, environment, GPU providers, functional parity or licensing. The local approved file must remain untouched until independently verified.

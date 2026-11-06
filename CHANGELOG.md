@@ -34,3 +34,9 @@ All notable changes are tracked using [Conventional Commits](https://www.convent
 - Add mandatory exclusive non-overlap checking and model-path configuration; preserve DML provider/operator checks.
 - Fingerprint diarization ONNX and PLDA assets in the QA cache signature.
 - Add mocked worker/QA contract tests; **no independent GPU run, installer release or client data published**.
+
+### Read-only worker equalization (developer cycle)
+
+- Add `scripts/auditar_worker_local.py` to compare candidate vs. final installed worker through SHA-256 and Python AST structure without executing local code or exposing file contents.
+- Add synthetic tests for matching/differing sources, missing exclusive diarization and invalid Python.
+- Document Git Bash one-command audit and a strict no-overwrite boundary for the working Windows setup; hardware validation remains pending.
