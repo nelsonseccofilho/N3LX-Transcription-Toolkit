@@ -2,6 +2,8 @@
 
 **Applicability:** currently configured local GPU application. The public repository does not yet distribute this CLI.
 
+> **Later local output contract (November 2026):** the Git Bash functions `transcrever`/`transcrever_pasta` wrap a six-stage resumable runner and create one framework JSON per recording under `transcricao/`. Technical logs and QA remain in separate private workspace storage. The Git Bash wrapper and exporter are **now published as a developer-source preview**; their GPU dependencies and diarization worker remain external. The options and Normal/Quality/Debug profiles **below** describe the **earlier local application**, not the new wrapper. See [new pipeline](NOVEMBER_2026_PIPELINE.md) and [adapter expectations](FRAMEWORK_EVIDENCE_ADAPTER.md).
+
 ## Example commands
 
 ```powershell
@@ -106,3 +108,9 @@ The quality report records stage status, backend detection, per-stage timing, op
 Raw ASR preserves the pre-alignment recognition output. Full diarization preserves regular and exclusive intervals and detected overlaps. The log records subprocess commands and backend evidence for debugging.
 
 Use [the original recording](PROJECT_STORY.md) to resolve important ambiguity and [validation guidance](VALIDATION.md) to interpret flags.
+
+## Developer-preview framework adapter
+
+The current source lives at [src/n3lx_toolkit/export_framework.py](../../src/n3lx_toolkit/export_framework.py), with [Git Bash commands](../../scripts/gitbash_commands.sh). The delivery file is transcricao/<original filename>.framework.json. The exporter verifies six PASS stages and source provenance, preserves recognized segment text and automatic speaker uncertainty, requires human review and refuses to overwrite a different existing JSON.
+
+See [developer setup](LOCAL_DEVELOPER_SETUP.md) and [adapter governance](FRAMEWORK_EVIDENCE_ADAPTER.md). The older Normal/Quality/Debug options above belong to the separate v1 local application; they are **not parameters of this new source wrapper**.

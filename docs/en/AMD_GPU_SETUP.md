@@ -1,6 +1,6 @@
 # AMD GPU workflow — Windows
 
-**Status: validated locally on an AMD Radeon RX 6600M; not yet packaged for reproducible public installation.**
+**Status: validated locally on an AMD Radeon RX 6600M; partial first-party developer-source snapshot now published, but not yet packaged for reproducible public installation.**
 
 ## Do not use the wrong backend
 
@@ -44,3 +44,7 @@ The local command `whisperxgpu` is an application-specific entry point on the re
 The full 18-minute run reported `vulkan_confirmado_pelo_log` for ASR and `onnx_directml_confirmado` for alignment and diarization. It also recorded 226,570 DirectML operators and 46,944 auxiliary CPU ONNX operators during alignment. These numbers are *test evidence*, not installation requirements.
 
 See [validation](VALIDATION.md) and [troubleshooting](TROUBLESHOOTING.md).
+
+## November 2026 developer preview
+
+Recovered source for six-stage QA, measured progress, one-framework-JSON export and Git Bash wrappers now lives under src/n3lx_toolkit and scripts/. **This does not include the exact working Community-1 worker or an installable model/environment distribution.** Refer to [developer setup](LOCAL_DEVELOPER_SETUP.md), [November pipeline](NOVEMBER_2026_PIPELINE.md), and [release criteria](RELEASE_CRITERIA.md) before trying another Windows machine.

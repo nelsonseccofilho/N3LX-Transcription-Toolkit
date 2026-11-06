@@ -42,3 +42,11 @@ On a fresh Windows environment with compatible hardware:
 After audit, create a signed/tagged release candidate with a versioned dependency manifest, changelog, license files, test evidence and reproducible setup steps. Preserve a rollback procedure. Do not announce a public v1.0.0 release before this gate.
 
 See [release criteria](RELEASE_CRITERIA.md) for explicit blockers.
+
+## Developer-source vs complete reproducibility
+
+Recovered first-party QA, progress, exporter and Bash sources plus model-free tests are now included. This does not complete Stage C: the validated Community-1 worker, model revisions/weights, external third-party integration, isolated venv packages and driver/toolchain provenance still need independent audit and clean-machine reproduction. See [developer setup](LOCAL_DEVELOPER_SETUP.md).
+
+## Worker recovery boundary
+
+The repository now includes a candidate recovered from an earlier local first-party worker and adapted for the exclusive diarization schema. This changes source availability but **does not complete the reproducibility gate**: the exact deployed worker still requires comparison; all Community-1 ONNX and PLDA models and third-party sources must be acquired legitimately and installed separately. [Contract](DIARIZATION_WORKER_CONTRACT.md).

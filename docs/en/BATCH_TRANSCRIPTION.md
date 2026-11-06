@@ -2,6 +2,8 @@
 
 **Status:** commands used in the local AMD GPU v1.0 workflow. The batch loop was observed starting correctly on a real folder containing seven MKV files. Completion of that entire seven-file batch has not yet been independently verified. **This is not a native batch mode inside `whisperxgpu`.** The GPU application is currently installed only on the reference Windows machine; the public repository does not yet include its installer.
 
+> **November 2026 local alternative:** a separately configured **Git Bash** wrapper provides `transcrever recording.mkv` for one input and `transcrever_pasta` for sequential, non-recursive processing of the current folder. It filters `.mkv/.mp4/.mp3/.ogg`, exposes live status/progress and exports one `*.framework.json` per file, while QA/cache stays private. **Only MKV has full end-to-end media validation in this cycle.** The Git Bash **source wrapper is now included**, but the full external GPU runtime and models are **not** installed by a clone. The PowerShell examples below remain the earlier application's behavior. [Details](NOVEMBER_2026_PIPELINE.md).
+
 ## Before running
 
 1. Open **PowerShell 7** in the folder containing your media files.
@@ -57,3 +59,16 @@ The exact timestamp depends on the run. Results and logs for private recordings 
 Native batch support with reliable resume/skip handling, collision prevention, per-file outcomes and progress summary is a future feature—not part of the locally validated v1.0 CLI.
 
 See also [CLI/output contract](OUTPUTS_AND_CLI.md), [validation](VALIDATION.md) and [AMD setup](AMD_GPU_SETUP.md).
+
+## Current Git Bash developer-preview commands
+
+On a Windows machine with all external runtime prerequisites described in [developer setup](LOCAL_DEVELOPER_SETUP.md):
+
+~~~bash
+source scripts/gitbash_commands.sh
+transcrever "recording.mkv"
+transcrever_pasta
+transcrever_pasta "/path/to/media"
+~~~
+
+The shell functions use the measured-progress runner, return failure on a failed QA/export, accept quoted or Tab-completed paths, and preserve one JSON per recording. Batch processing is sequential and not recursive. This section documents source availability, **not** a verified clean-machine installation.

@@ -9,6 +9,12 @@
 
 A GitHub repository containing documentation is not a downloadable software release. Do not tag a v1.0.0 software version prematurely.
 
+## November 2026 extension (local implementation only)
+
+A distinct later local runner completed six-stage end-to-end QA on an anonymous 21-minute MKV, with in-terminal live progress and one framework-oriented JSON output. **This does not change the public release status:** the newer first-party runner, wrapper, monitor and exporter are now present as **developer-preview source**, but the exact validated diarization worker, model weights, environment/driver locks and complete installer are **not** distributed or independently reproduced from this repository. Details: [November pipeline](NOVEMBER_2026_PIPELINE.md).
+
+Additional public-release gates: audit/sanitize latest sources, inspect dependency/model provenance and licenses, verify clean Windows/Git Bash install, test additional media formats and interrupted/resumed batches, publish synthetic JSON fixtures/schema tests, and measure human-reviewed transcription accuracy (WER) before claiming `-bs 5` improves quality.
+
 ## Public software release gates
 
 - [ ] Decide and publish license(s) for original project code and documentation.
@@ -40,3 +46,11 @@ A GitHub repository containing documentation is not a downloadable software rele
 - Legal/license: model terms and upstream code licenses require independent verification.
 
 Ownership of these outstanding tasks remains with this repository; the related operating framework is a **motivating use case**, not a home for this Toolkit's change history.
+
+## Recovered worker gate (November 2026)
+
+An archived first-party DirectML worker was recovered, and a **candidate** was adapted to emit both regular and exclusive Community-1 intervals and to validate exclusive non-overlap. Contract tests passed using synthetic, mocked data only. **Before declaring it the hardware-validated version**, compare with the final installed Windows worker and verify a real authorized WAV, model revisions, provider/operator evidence, fail-closed behavior, external dependency licenses and parity against the preexisting approved output. Do not overwrite the working local version on a documentation-only or synthetic PASS.
+
+## Source equality gate
+
+Before replacing the validated Windows worker, collect the read-only `auditar_worker_local.py` report. If hashes differ, review changed function semantics and confirm the full regular/exclusive JSON on a controlled authorized WAV. Even matching hashes only proves **source identity**; it does not prove model revisions, environment, GPU providers, functional parity or licensing. The local approved file must remain untouched until independently verified.

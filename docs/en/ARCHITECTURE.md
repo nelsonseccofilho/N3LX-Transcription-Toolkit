@@ -2,6 +2,8 @@
 
 The AMD reference workflow is **not conventional WhisperX with a `--device vulkan` flag**. It combines independently configured executables, models and Python environments.
 
+> **November 2026:** a distinct later local runner added cached six-stage QA, Beam Size 5, truthful Git Bash progress and framework-oriented JSON export. The newer QA, monitor, exporter and Git Bash **developer-preview sources are now present** under src/n3lx_toolkit and scripts/, but remain **incomplete for a clean GPU install** because the exact validated external diarization worker, model weights and environments are not shipped. The older source map below describes historical local v1. See [new reference](NOVEMBER_2026_PIPELINE.md).
+
 ## Pipeline
 
 ```text
@@ -72,3 +74,19 @@ The main application preserves partial integrated output when an alignment or di
 Debug output is intended for diagnosis. Logs and QA JSON can include absolute input paths and must **never** be uploaded unredacted to public issues or source control.
 
 Read [dependencies](DEPENDENCIES.md), [outputs](OUTPUTS_AND_CLI.md) and [release criteria](RELEASE_CRITERIA.md) before interpreting the reference setup as a distributable installer.
+
+## Current developer-preview module ownership
+
+| Module | Responsibility | Boundary |
+| --- | --- | --- |
+| src/n3lx_toolkit/qa_unificado.py | Six-stage resumable QA, ASR/CTC/diarization contracts | Requires external Community-1 worker and model environments |
+| src/n3lx_toolkit/monitor.py | Actual stage status and ASR time progress | Reads QA files; cannot infer unseen stages |
+| src/n3lx_toolkit/export_framework.py | PROJECT_OWNED one-file evidence JSON | No requirement or identity approval |
+| scripts/gitbash_commands.sh | Single-file and sequential folder shell functions | Functions must be sourced in Windows Git Bash |
+| tests/test_toolkit.py | Model-free synthetic regressions | Not a Vulkan/DirectML hardware test |
+
+See [developer setup](LOCAL_DEVELOPER_SETUP.md), [framework adapter](FRAMEWORK_EVIDENCE_ADAPTER.md), and [November findings](NOVEMBER_2026_PIPELINE.md).
+
+## Community-1 worker boundary
+
+`src/n3lx_toolkit/diarizacao_directml_worker.py` is a first-party adapter (recovered and amended), **not** a copy of the external ONNX pyannote library or model weights. It outputs regular plus exclusive intervals, has strict timestamp and DirectML evidence checks and reads external module/model directories from environment. Only the schema/interval code was tested with mocks in this recovery cycle; real GPU and final local-worker equivalence are pending. [Contract](DIARIZATION_WORKER_CONTRACT.md).

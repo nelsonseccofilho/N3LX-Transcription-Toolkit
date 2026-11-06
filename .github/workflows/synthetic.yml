@@ -1,0 +1,28 @@
+name: Synthetic source checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    name: Unit tests and Bash syntax
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile Python sources
+        run: python -m compileall -q src tests
+      - name: Run synthetic unit tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Check Git Bash shell syntax
+        run: bash -n scripts/gitbash_commands.sh
+
+# This workflow does not run GPU/Vulkan/DirectML or a clean Windows install.
