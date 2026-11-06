@@ -27,7 +27,7 @@ import time
 import wave
 
 VERSION = "2026-11-06.2-bs5"
-CACHE_VERSION = "2026-11-06.1-bs5-public1"
+CACHE_VERSION = "2026-11-06.1-bs5-public2"
 # Explicit source required; never ship a real or private recording path.
 
 # Scripts executados no ambiente de exportacao e no ambiente de inferencia,
@@ -263,7 +263,9 @@ def main() -> int:
     project = Path(__file__).resolve().parents[2]
     git_root = project.parent
     workspace = Path(os.environ.get("N3LX_WORKSPACE", str(git_root / "_workspace"))).expanduser().resolve()
-    diarization = Path(os.environ.get("N3LX_DIARIZATION_WORKER", str(project / "src/diarizacao_directml_worker.py"))).expanduser().resolve()
+    diarization = Path(os.environ.get("N3LX_DIARIZATION_WORKER", str(project / "src/n3lx_toolkit/diarizacao_directml_worker.py"))).expanduser().resolve()
+    onnx_repo = Path(os.environ.get("N3LX_ONNX_PYANNOTE_REPO", str(workspace / "tools/pyannote-onnx-ext-comm-1"))).expanduser().resolve()
+    diar_models = Path(os.environ.get("N3LX_DIARIZATION_MODELS", str(workspace / "models/diarization/onnx-community-1"))).expanduser().resolve()
     source = args.input.expanduser().resolve()
     if not source.is_file():
         print(f"FAIL: video nao localizado: {source}", file=sys.stderr)
@@ -275,7 +277,13 @@ def main() -> int:
         workspace / "tools/whisper.cpp/build-vulkan-nmake/bin/whisper-cli.exe",
         workspace / "models/ggml-large-v3.bin",
         diarization,
-        workspace / "tools/pyannote-onnx-ext-comm-1/utils/audio.py",
+        onnx_repo / "utils/audio.py",
+        onnx_repo / "onnx_pyannote.py",
+        diar_models / "segmentation.onnx",
+        diar_models / "embedding.onnx",
+        diar_models / "community-1.json",
+        diar_models / "plda/plda.npz",
+        diar_models / "plda/xvec_transform.npz",
         workspace / "models/alignment/onnx-pt.staging/model.onnx",
         workspace / "models/alignment/wav2vec2-large-xlsr-53-portuguese-source/pytorch_model.bin",
         project / "config/alignment-pt-revision.json",

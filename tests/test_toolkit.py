@@ -121,5 +121,85 @@ class ConfigurationTest(unittest.TestCase):
         self.assertIn('"-bs", "5"', source)
 
 
+
+class DiarizationWorkerContractTest(unittest.TestCase):
+    """No ONNX Runtime needed: validate the worker/QA JSON interface."""
+
+    @staticmethod
+    def annotation(items):
+        class Segment:
+            def __init__(self, start, end):
+                self.start, self.end = start, end
+
+        class Annotation:
+            def itertracks(self, *, yield_label):
+                if not yield_label:
+                    raise AssertionError("Speaker labels are required")
+                return iter((Segment(a, b), None, label) for a, b, label in items)
+
+        return Annotation()
+
+    def test_regular_overlap_and_exclusive_no_overlap(self):
+        from n3lx_toolkit import diarizacao_directml_worker as worker
+        overlap = self.annotation([(0.05, 0.40, "SPEAKER_00"),
+                                   (0.30, 0.60, "SPEAKER_01")])
+        regular = worker.extract_intervals(overlap, 1.0, exclusive=False)
+        self.assertEqual(len(regular), 2)
+        with self.assertRaises(ValueError):
+            worker.extract_intervals(overlap, 1.0, exclusive=True)
+        exclusive = self.annotation([(0.05, 0.30, "SPEAKER_00"),
+                                     (0.30, 0.60, "SPEAKER_01")])
+        self.assertEqual(len(worker.extract_intervals(exclusive, 1.0, exclusive=True)), 2)
+
+    def test_qa_contract_with_mocked_directml(self):
+        import wave
+        from unittest.mock import patch
+        from n3lx_toolkit import diarizacao_directml_worker as worker
+        with tempfile.TemporaryDirectory() as tmp:
+            audio = Path(tmp) / "synthetic.wav"
+            output = Path(tmp) / "diarization.json"
+            with wave.open(str(audio), "wb") as stream:
+                stream.setnchannels(1)
+                stream.setsampwidth(2)
+                stream.setframerate(16000)
+                stream.writeframes(b"\0\0" * 16000)
+
+            regular = self.annotation([(0.1, 0.5, "SPEAKER_00"),
+                                       (0.4, 0.8, "SPEAKER_01")])
+            exclusive = self.annotation([(0.1, 0.4, "SPEAKER_00"),
+                                         (0.4, 0.8, "SPEAKER_01")])
+
+            class FakePipeline:
+                segmentation_session = object()
+                embedding_session = object()
+
+                def __call__(self, unused):
+                    return type("Result", (), {
+                        "speaker_diarization": regular,
+                        "exclusive_speaker_diarization": exclusive,
+                    })()
+
+            with patch.object(worker, "load_pipeline", return_value=FakePipeline()), \
+                 patch.object(worker, "operators_by_provider", return_value={
+                     "DmlExecutionProvider": 5, "CPUExecutionProvider": 2
+                 }):
+                worker.run(audio, output)
+            data = json.loads(output.read_text(encoding="utf-8"))
+            self.assertEqual(data["backend"], "onnx_directml_confirmado")
+            self.assertEqual(len(data["intervals"]), 2)
+            self.assertEqual(len(data["exclusive_intervals"]), 2)
+            self.assertEqual(data["operadores_directml"]["embedding"], 5)
+            self.assertEqual(qa_unificado.validate_diarization(output)["exclusive"], 2)
+
+    def test_missing_external_models_fail_closed(self):
+        from unittest.mock import patch
+        from n3lx_toolkit import diarizacao_directml_worker as worker
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            with patch.object(worker, "REPO", root), patch.object(worker, "MODELS", root):
+                with self.assertRaises(FileNotFoundError):
+                    worker.validate_local_models()
+
+
 if __name__ == "__main__":
     unittest.main()

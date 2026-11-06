@@ -69,3 +69,7 @@ O [README principal](../../README.md) está em inglês. O histórico segue [Conv
 ## Estrutura atual do código
 
 A prévia agora contém QA unificado, monitor e exportação JSON. Para configurar a máquina de desenvolvimento sem modificar o ambiente já aprovado, consulte o [guia de estrutura e requisitos externos](ESTRUTURA_DESENVOLVIMENTO.md). Testes sintéticos estão disponíveis em [tests/test_toolkit.py](../../tests/test_toolkit.py).
+
+### Recuperação do worker Community-1
+
+Um worker anterior foi recuperado e adaptado para emitir intervalos regulares e exclusivos, conforme o QA. O contrato foi exercitado com dados sintéticos, mas a versão reconstruída **ainda não foi verificada na GPU real**. Preserve o worker local aprovado. [Contrato e validação](../en/DIARIZATION_WORKER_CONTRACT.md).

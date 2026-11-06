@@ -77,3 +77,7 @@ Version pinning is not the same as model licensing: package wheels, scripts, exp
 The **QA, monitor, exporter and Git Bash source files** are now published. The monitor and JSON exporter use Python's standard library and can be exercised with synthetic data without GPU models. The QA runner itself invokes a Vulkan whisper.cpp executable, separate DirectML and CTC-reference Python interpreters, authorized large-v3/Portuguese Wav2Vec2 weights, and a separately configured external Community-1 diarization worker.
 
 The exact worker source used for the real November hardware test is **not yet recovered/approved for publication**. No full Python dependency lock or model acquisition script is claimed. For file layout and environment overrides see [developer setup](LOCAL_DEVELOPER_SETUP.md).
+
+## Diarization worker candidate dependencies
+
+The first-party recovered adapter is now in `src/n3lx_toolkit/diarizacao_directml_worker.py`, but still loads the external `onnx_pyannote` checkout and separately authorized Community-1 model assets. Runtime configuration is explicit: `N3LX_WORKSPACE`, `N3LX_ONNX_PYANNOTE_REPO`, and `N3LX_DIARIZATION_MODELS`; use `N3LX_DIARIZATION_WORKER` to preserve the already validated local worker until new hardware testing passes. The exact working local worker revision and complete dependency locks remain unverified.

@@ -1,6 +1,6 @@
 # Estrutura de desenvolvimento — novembro/2026
 
-**O Toolkit agora inclui código-fonte de desenvolvimento**, não apenas documentação. Foram incorporados o QA unificado, o monitor, o exportador de evidências e os comandos Git Bash. **Ainda não é um instalador público ou uma reprodução completa do ambiente Windows validado**: o worker exato do Community-1, os ambientes Python isolados, os modelos e as permissões de redistribuição dependem de recuperação e revisão.
+**O Toolkit agora inclui código-fonte de desenvolvimento**, não apenas documentação. Foram incorporados o QA unificado, o monitor, o exportador de evidências e os comandos Git Bash. **Ainda não é um instalador público ou uma reprodução completa do ambiente Windows validado**: a versão final do worker aprovado no Windows ainda precisa ser comparada com o **candidato reconstruído** agora publicado. Os ambientes isolados, modelos e licenças permanecem externos.
 
 ## Estrutura
 
@@ -46,3 +46,7 @@ bash -n scripts/gitbash_commands.sh
 ~~~
 
 Esses testes não comprovam uma nova instalação Vulkan/DirectML ou qualidade do texto. Leia o guia em inglês, os resultados de novembro e os critérios de release antes de publicar um instalador.
+
+## Worker recuperado (candidato)
+
+`src/n3lx_toolkit/diarizacao_directml_worker.py` produz `intervals` e `exclusive_intervals`, mantendo a exigência de operadores DirectML e rejeitando sobreposição na saída exclusiva. Testes sintéticos passaram; **não substitua o worker instalado e validado sem nova comparação na GPU**. O worker usa `N3LX_WORKSPACE`, `N3LX_ONNX_PYANNOTE_REPO` e `N3LX_DIARIZATION_MODELS` ou pode ser substituído por um caminho local explicitamente aprovado via `N3LX_DIARIZATION_WORKER`. [Contrato técnico](../en/DIARIZATION_WORKER_CONTRACT.md).

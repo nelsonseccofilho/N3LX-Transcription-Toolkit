@@ -46,3 +46,7 @@ Additional public-release gates: audit/sanitize latest sources, inspect dependen
 - Legal/license: model terms and upstream code licenses require independent verification.
 
 Ownership of these outstanding tasks remains with this repository; the related operating framework is a **motivating use case**, not a home for this Toolkit's change history.
+
+## Recovered worker gate (November 2026)
+
+An archived first-party DirectML worker was recovered, and a **candidate** was adapted to emit both regular and exclusive Community-1 intervals and to validate exclusive non-overlap. Contract tests passed using synthetic, mocked data only. **Before declaring it the hardware-validated version**, compare with the final installed Windows worker and verify a real authorized WAV, model revisions, provider/operator evidence, fail-closed behavior, external dependency licenses and parity against the preexisting approved output. Do not overwrite the working local version on a documentation-only or synthetic PASS.

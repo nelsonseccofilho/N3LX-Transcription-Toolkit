@@ -1,6 +1,6 @@
 # Developer source layout — November 2026
 
-**Status: developer preview, not a complete public GPU installer.** The Toolkit now publishes recovered first-party sources for its six-stage QA, Git Bash live monitor, evidence JSON exporter and command wrappers. The **exact Windows-validated Community-1 diarization worker**, isolated runtime environments, model weights, required third-party integration code and a clean-machine installation procedure are **not included**.
+**Status: developer preview, not a complete public GPU installer.** The Toolkit now publishes recovered first-party sources for its six-stage QA, Git Bash live monitor, evidence JSON exporter and command wrappers. An **earlier first-party worker recovered and adapted** to the QA output contract is now included, but it is not confirmed equivalent to the final Windows-tested worker. Runtime environments, model weights, external ONNX integration and a clean installer are not included.
 
 ## Repository map
 
@@ -30,10 +30,10 @@ The reference QA script expects a configurable workspace containing:
 3. A separate CTC export/reference environment at venvs/whispergpu-ctc-export/Scripts/python.exe (PyTorch and Transformers, pinned to compatible versions).
 4. The Portuguese ONNX CTC model at models/alignment/onnx-pt.staging/model.onnx.
 5. The locally acquired Portuguese Wav2Vec2 source directory at models/alignment/wav2vec2-large-xlsr-53-portuguese-source (pytorch_model.bin, config.json, preprocessor_config.json, vocab.json).
-6. A compatible external **diarizacao_directml_worker.py** using the --input / --output interface, plus separately authorized pyannote Community-1 ONNX weights and the ONNX integration package.
+6. A compatible **diarizacao_directml_worker.py** using the --input / --output interface. The developer preview now includes a reconstructed candidate; real GPU validation against the final local worker remains pending. Community-1 model weights and the ONNX integration package are external.
 7. FFmpeg executable on PATH, Windows Git Bash and an AMD GPU exposing Vulkan and DirectML.
 
-All relative items above are beneath the workspace root. This repository does not download or redistribute models or third-party weights, and does not install the worker. It does **not** claim a fresh clone will run GPU transcription.
+All relative items above are beneath the workspace root. This repository does not download or redistribute models or third-party weights, and does not install external model/integration dependencies. It does **not** claim a fresh clone will run GPU transcription.
 
 ## Configure an already working Windows installation
 
@@ -68,8 +68,14 @@ bash -n scripts/gitbash_commands.sh
 python src/n3lx_toolkit/qa_unificado.py --help
 ~~~
 
-The synthetic tests check exporter integrity, speaker ambiguity, output conflicts, missing QA approval, logging timestamps and decoder/cache settings. They require no GPU models, network or private recordings. **They are not evidence that the new public repository setup has passed real hardware ASR**, or that the missing worker can be recreated from this repo.
+The synthetic tests check exporter integrity, speaker ambiguity, output conflicts, missing QA approval, logging timestamps and decoder/cache settings. They require no GPU models, network or private recordings. **They are not evidence that the new public repository setup has passed real hardware ASR**, or that the reconstructed worker is equivalent to the final approved Windows version.
 
 ## Release gate
 
 Before a public installable release: recover and audit the exact working external worker, inspect licenses and model terms, pin all Python/build/model revisions, add authorized installation procedures and a truly clean Windows reproduction, test extra media formats and interrupts, and test WER against a human-reviewed reference. See RELEASE_CRITERIA.md and NOVEMBER_2026_PIPELINE.md.
+
+## Recovered diarization worker and cache
+
+The default path is now `src/n3lx_toolkit/diarizacao_directml_worker.py`. Override `N3LX_ONNX_PYANNOTE_REPO` (checkout containing `onnx_pyannote.py`) and `N3LX_DIARIZATION_MODELS` (segmentation, embedding, Community-1 config and PLDA files) as needed, using native Windows paths. To retain the already validated local worker, set `N3LX_DIARIZATION_WORKER` explicitly. The QA cache fingerprint tracks the worker code and the ONNX/PLDA dependencies, so changes create distinct cached evidence.
+
+The published candidate's interval/output schema passed mocked tests. **Actual DirectML inference and compatibility with the last Windows worker are not yet tested for this version.** See the [worker contract](DIARIZATION_WORKER_CONTRACT.md).

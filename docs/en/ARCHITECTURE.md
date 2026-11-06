@@ -86,3 +86,7 @@ Read [dependencies](DEPENDENCIES.md), [outputs](OUTPUTS_AND_CLI.md) and [release
 | tests/test_toolkit.py | Model-free synthetic regressions | Not a Vulkan/DirectML hardware test |
 
 See [developer setup](LOCAL_DEVELOPER_SETUP.md), [framework adapter](FRAMEWORK_EVIDENCE_ADAPTER.md), and [November findings](NOVEMBER_2026_PIPELINE.md).
+
+## Community-1 worker boundary
+
+`src/n3lx_toolkit/diarizacao_directml_worker.py` is a first-party adapter (recovered and amended), **not** a copy of the external ONNX pyannote library or model weights. It outputs regular plus exclusive intervals, has strict timestamp and DirectML evidence checks and reads external module/model directories from environment. Only the schema/interval code was tested with mocks in this recovery cycle; real GPU and final local-worker equivalence are pending. [Contract](DIARIZATION_WORKER_CONTRACT.md).

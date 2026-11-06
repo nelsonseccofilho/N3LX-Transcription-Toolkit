@@ -25,7 +25,7 @@ The later local AMD GPU reference adds **six-stage resumable QA**, `-bs 5`, Git 
 
 Read the [November engineering record](docs/en/NOVEMBER_2026_PIPELINE.md), [private evidence adapter expectations](docs/en/FRAMEWORK_EVIDENCE_ADAPTER.md) and [Portuguese guide](docs/pt-BR/PIPELINE_NOVEMBRO_2026.md).
 
-**Developer-preview sources are now included** under [src/n3lx_toolkit](src/n3lx_toolkit), [Git Bash wrappers](scripts/gitbash_commands.sh) and [synthetic tests](tests/test_toolkit.py). A complete installer remains unavailable because the exact validated diarization worker, model weights, third-party integration, environment locks and clean-machine reproduction are still external. Start with the [developer setup guide](docs/en/LOCAL_DEVELOPER_SETUP.md). The existing PowerShell commands and Normal/Quality/Debug flags below document an **earlier local application**, not this new Git Bash runner. The public-release gates remain open.
+**Developer-preview sources are now included** under [src/n3lx_toolkit](src/n3lx_toolkit), [Git Bash wrappers](scripts/gitbash_commands.sh) and [synthetic tests](tests/test_toolkit.py). A complete installer remains unavailable because a recovered worker candidate is now included, but its equivalence to the last Windows-tested worker is unverified. Model weights, third-party integration, environment locks and clean-machine reproduction remain external. Start with the [developer setup guide](docs/en/LOCAL_DEVELOPER_SETUP.md). The existing PowerShell commands and Normal/Quality/Debug flags below document an **earlier local application**, not this new Git Bash runner. The public-release gates remain open.
 
 ## Choose your environment
 
@@ -114,7 +114,7 @@ All commits use [Conventional Commits](https://www.conventionalcommits.org/), in
 
 ## Developer-preview code
 
-The November 2026 implementation publishes the six-stage GPU QA runner, live monitor, framework JSON exporter and Git Bash command definitions as first-party source. These modules are **not** a substitute for separately licensed models and the external Community-1 worker.
+The November 2026 implementation publishes the six-stage GPU QA runner, live monitor, framework JSON exporter and Git Bash command definitions as first-party source. These modules are **not** a substitute for separately licensed models and the external Community-1 ONNX implementation. The recovered worker adapter is a candidate, not a validated replacement for the last installed worker.
 
 ~~~bash
 # After the external GPU dependencies are configured; see developer setup.
@@ -124,3 +124,7 @@ transcrever_pasta
 ~~~
 
 [Developer setup](docs/en/LOCAL_DEVELOPER_SETUP.md) · [Python sources](src/n3lx_toolkit) · [Synthetic tests](tests/test_toolkit.py)
+
+### Recovered diarization worker — candidate
+
+An earlier first-party worker was recovered and adapted to the QA contract, including regular and exclusive Community-1 intervals. Its synthetic contract tests pass; **GPU behavior and equivalence to the final installed worker are not yet confirmed**. [Details](docs/en/DIARIZATION_WORKER_CONTRACT.md).

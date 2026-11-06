@@ -27,3 +27,10 @@ All notable changes are tracked using [Conventional Commits](https://www.convent
 - Review/publish project and third-party licenses.
 - Audit and publish dependency locks, authorized model acquisition, installation scripts and source.
 - Pass independent clean-install checks, integration QA and accessible documentation review before a public software release.
+
+### Recovery cycle: Community-1 worker interface (developer preview)
+
+- Recover an earlier DirectML first-party diarization worker and adapt it to provide regular and **exclusive** Community-1 speaker intervals.
+- Add mandatory exclusive non-overlap checking and model-path configuration; preserve DML provider/operator checks.
+- Fingerprint diarization ONNX and PLDA assets in the QA cache signature.
+- Add mocked worker/QA contract tests; **no independent GPU run, installer release or client data published**.
