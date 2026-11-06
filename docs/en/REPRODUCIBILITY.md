@@ -42,3 +42,7 @@ On a fresh Windows environment with compatible hardware:
 After audit, create a signed/tagged release candidate with a versioned dependency manifest, changelog, license files, test evidence and reproducible setup steps. Preserve a rollback procedure. Do not announce a public v1.0.0 release before this gate.
 
 See [release criteria](RELEASE_CRITERIA.md) for explicit blockers.
+
+## Developer-source vs complete reproducibility
+
+Recovered first-party QA, progress, exporter and Bash sources plus model-free tests are now included. This does not complete Stage C: the validated Community-1 worker, model revisions/weights, external third-party integration, isolated venv packages and driver/toolchain provenance still need independent audit and clean-machine reproduction. See [developer setup](LOCAL_DEVELOPER_SETUP.md).

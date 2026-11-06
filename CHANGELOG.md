@@ -2,7 +2,7 @@
 
 All notable changes are tracked using [Conventional Commits](https://www.conventionalcommits.org/).
 
-**Public status: documentation bootstrap.** The local reference application's v1.0.0 validation is not a public release or public installer.
+**Public status: developer-preview sources and documentation; no complete public installer.** The local reference application's v1.0.0 validation is not a public release or public installer.
 
 ## Unreleased
 
@@ -15,13 +15,13 @@ All notable changes are tracked using [Conventional Commits](https://www.convent
 - Provide an English-first README, a Brazilian Portuguese entry point, CPU setup and troubleshooting.
 - Establish security, contributing, ignore-file and public release requirements.
 
-### November 2026 local reference — documented, not released
+### November 2026 local reference — source preview, not a release
 
 - Capture a distinct AMD GPU local runner: Whisper large-v3/Vulkan `-bs 5`, Portuguese CTC word alignment and Community-1 ONNX/DirectML speaker diarization.
 - Record six-stage resumable QA, parameter-aware cache, end-to-end PASS and sanitized metrics from an anonymous 21-minute recording.
 - Document Git Bash single-file/sequential folder commands and a live progress dashboard based on real ASR timestamps.
 - Document one framework-oriented JSON per recording, private QA evidence separation and human-review authority boundaries.
-- Add bilingual learning notes, schema expectations and release blockers; **no local executable or private data is published**.
+- Add bilingual guides and release blockers; publish recovered first-party QA, monitor, exporter and Git Bash wrapper sources plus synthetic tests. **No client media, model weights, external worker or installer is published**.
 
 ### Pending
 - Review/publish project and third-party licenses.

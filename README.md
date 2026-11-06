@@ -25,7 +25,7 @@ The later local AMD GPU reference adds **six-stage resumable QA**, `-bs 5`, Git 
 
 Read the [November engineering record](docs/en/NOVEMBER_2026_PIPELINE.md), [private evidence adapter expectations](docs/en/FRAMEWORK_EVIDENCE_ADAPTER.md) and [Portuguese guide](docs/pt-BR/PIPELINE_NOVEMBRO_2026.md).
 
-**Important:** these newer functions are installed only on the configured reference machine; no public installer/source bundle is available here. The existing PowerShell commands and Normal/Quality/Debug flags below document an **earlier local application**, not this new Git Bash runner. The public-release gates remain open.
+**Developer-preview sources are now included** under [src/n3lx_toolkit](src/n3lx_toolkit), [Git Bash wrappers](scripts/gitbash_commands.sh) and [synthetic tests](tests/test_toolkit.py). A complete installer remains unavailable because the exact validated diarization worker, model weights, third-party integration, environment locks and clean-machine reproduction are still external. Start with the [developer setup guide](docs/en/LOCAL_DEVELOPER_SETUP.md). The existing PowerShell commands and Normal/Quality/Debug flags below document an **earlier local application**, not this new Git Bash runner. The public-release gates remain open.
 
 ## Choose your environment
 
@@ -38,7 +38,7 @@ Read the [November engineering record](docs/en/NOVEMBER_2026_PIPELINE.md), [priv
 | Want to reproduce the results? | [Validation](docs/en/VALIDATION.md) | Local reference test evidence; no independently measured WER |
 | Need the current delivery status? | [Release criteria](docs/en/RELEASE_CRITERIA.md) | Software packaging and license review pending |
 
-> **Important release distinction:** The private/local **GPU application v1.0.0** has passed an end-to-end meeting test and its default output-profile regression. **The public repository is currently documentation-first; it is not yet a ready-to-install v1.0.0 software release.** Copying or cloning this repository will not yet install `whisperxgpu`.
+> **Important release distinction:** The private/local **GPU application v1.0.0** has passed an end-to-end meeting test and its default output-profile regression. **This repository now includes developer-preview source modules, but it is not a ready-to-install v1.0.0 software release.** Copying or cloning this repository will not yet install `whisperxgpu`.
 
 ## Reference hardware: real, non-CUDA results
 
@@ -111,3 +111,16 @@ This repository does not contain client data, private recordings, or unredacted 
 **Licensing is under review.** Until a license is selected and published, public visibility is not permission to copy or redistribute project source. Third-party code and model weights have separate licenses and access requirements; these must be checked before bundling.
 
 All commits use [Conventional Commits](https://www.conventionalcommits.org/), in English. Please avoid publishing private media or personal information in issues or pull requests.
+
+## Developer-preview code
+
+The November 2026 implementation publishes the six-stage GPU QA runner, live monitor, framework JSON exporter and Git Bash command definitions as first-party source. These modules are **not** a substitute for separately licensed models and the external Community-1 worker.
+
+~~~bash
+# After the external GPU dependencies are configured; see developer setup.
+source scripts/gitbash_commands.sh
+transcrever "recording.mkv"
+transcrever_pasta
+~~~
+
+[Developer setup](docs/en/LOCAL_DEVELOPER_SETUP.md) · [Python sources](src/n3lx_toolkit) · [Synthetic tests](tests/test_toolkit.py)

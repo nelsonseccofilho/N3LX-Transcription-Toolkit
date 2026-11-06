@@ -16,7 +16,7 @@ O Operating System motivou essa solução, mas **não é obrigatório para usar 
 
 A versão local mais recente validou **Whisper large-v3/Vulkan (Beam Size 5)**, alinhamento e diarização **ONNX/DirectML**, seis etapas de QA com cache e monitor de progresso integrado ao Git Bash. A entrega rotineira passou a ser **um JSON para o framework por gravação**. Em uma mídia anônima de 21 minutos, foram 530 segmentos, 98,34% de cobertura de timestamps e 99,90% de atribuição automática entre as palavras alinhadas. **Isso não representa precisão do texto.**
 
-Os comandos `transcrever` e `transcrever_pasta` existem somente na instalação local. O repositório continua **sem instalador público**; os comandos PowerShell abaixo descrevem outra implementação anterior.
+As funções `transcrever` e `transcrever_pasta` agora têm **código de desenvolvimento publicado** em [scripts/gitbash_commands.sh](../../scripts/gitbash_commands.sh), com [QA, monitor e exportador](../../src/n3lx_toolkit). O repositório continua **sem instalador completo** para modelos e o worker de diarização; os comandos PowerShell abaixo descrevem outra implementação anterior.
 
 [Leia os aprendizados em português](PIPELINE_NOVEMBRO_2026.md) · [Referência técnica em inglês](../en/NOVEMBER_2026_PIPELINE.md)
 
@@ -60,8 +60,12 @@ Get-ChildItem -File -Filter *.mkv | Sort-Object Name | ForEach-Object { Write-Ho
 - [Testes e limitações](../en/VALIDATION.md)
 - [Critérios para a publicação do software](../en/RELEASE_CRITERIA.md)
 
-> **Situação da publicação:** a aplicação GPU v1.0.0 foi validada **localmente**, mas o repositório público ainda é uma base de documentação. **Ele não fornece, neste momento, um instalador completo e reproduzível em outro computador.** O objetivo é publicar a implementação, dependências e testes depois das auditorias de segurança, licenças e reprodução.
+> **Situação da publicação:** a aplicação GPU v1.0.0 foi validada **localmente**, mas o repositório público agora inclui prévias do código-fonte e documentação, mas não distribui todas as dependências ou um instalador reproduzível. **Ele não fornece, neste momento, um instalador completo e reproduzível em outro computador.** O objetivo é publicar a implementação, dependências e testes depois das auditorias de segurança, licenças e reprodução.
 
 A gravação é a evidência primária; a transcrição é uma representação auxiliar e pode conter erros. Não publique gravações privadas, transcrições reais, tokens, caminhos pessoais ou capturas sem revisão.
 
 O [README principal](../../README.md) está em inglês. O histórico segue [Conventional Commits](https://www.conventionalcommits.org/) em inglês. A licença do software público ainda precisa ser definida e publicada.
+
+## Estrutura atual do código
+
+A prévia agora contém QA unificado, monitor e exportação JSON. Para configurar a máquina de desenvolvimento sem modificar o ambiente já aprovado, consulte o [guia de estrutura e requisitos externos](ESTRUTURA_DESENVOLVIMENTO.md). Testes sintéticos estão disponíveis em [tests/test_toolkit.py](../../tests/test_toolkit.py).

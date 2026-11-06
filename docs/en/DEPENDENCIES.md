@@ -71,3 +71,9 @@ Do not install a made-up `requirements.txt` or download models from arbitrary mi
 8. Reproduction results on a clean Windows installation and at least one non-reference device.
 
 Version pinning is not the same as model licensing: package wheels, scripts, exported model weights and recordings have different distribution rules. See [reproducibility](REPRODUCIBILITY.md) and [release criteria](RELEASE_CRITERIA.md).
+
+## Developer-preview source dependency status
+
+The **QA, monitor, exporter and Git Bash source files** are now published. The monitor and JSON exporter use Python's standard library and can be exercised with synthetic data without GPU models. The QA runner itself invokes a Vulkan whisper.cpp executable, separate DirectML and CTC-reference Python interpreters, authorized large-v3/Portuguese Wav2Vec2 weights, and a separately configured external Community-1 diarization worker.
+
+The exact worker source used for the real November hardware test is **not yet recovered/approved for publication**. No full Python dependency lock or model acquisition script is claimed. For file layout and environment overrides see [developer setup](LOCAL_DEVELOPER_SETUP.md).

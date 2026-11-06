@@ -11,7 +11,7 @@ A GitHub repository containing documentation is not a downloadable software rele
 
 ## November 2026 extension (local implementation only)
 
-A distinct later local runner completed six-stage end-to-end QA on an anonymous 21-minute MKV, with in-terminal live progress and one framework-oriented JSON output. **This does not change the public release status:** the newer runner, wrapper, monitor and exporter are not currently distributed or installable from this repository. Details: [November pipeline](NOVEMBER_2026_PIPELINE.md).
+A distinct later local runner completed six-stage end-to-end QA on an anonymous 21-minute MKV, with in-terminal live progress and one framework-oriented JSON output. **This does not change the public release status:** the newer first-party runner, wrapper, monitor and exporter are now present as **developer-preview source**, but the exact validated diarization worker, model weights, environment/driver locks and complete installer are **not** distributed or independently reproduced from this repository. Details: [November pipeline](NOVEMBER_2026_PIPELINE.md).
 
 Additional public-release gates: audit/sanitize latest sources, inspect dependency/model provenance and licenses, verify clean Windows/Git Bash install, test additional media formats and interrupted/resumed batches, publish synthetic JSON fixtures/schema tests, and measure human-reviewed transcription accuracy (WER) before claiming `-bs 5` improves quality.
 

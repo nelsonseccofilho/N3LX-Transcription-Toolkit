@@ -54,3 +54,17 @@ model-cache/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Nov 2026: private framework deliverables, QA/cache
+*.ogg
+*.framework.json
+transcricao/
+transcription/
+_workspace/
+qa/
+*.npz
+qa_report.json
+integracao-qualidade.json
+asr-raw.json
+diarization.json
+*.log

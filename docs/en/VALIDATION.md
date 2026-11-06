@@ -72,3 +72,7 @@ An anonymized **1,262.891-second MKV** passed all six local QA stages: preflight
 This newer runner used `-bs 5` after preserving `-bs 1` and separating its cache fingerprint. No matched human-reviewed WER comparison was made. Numeric tokens and very short windows can remain unaligned; diarization inside a segment may be mixed. A new Git Bash progress dashboard was visually observed showing **3/6 stages and 11.4% ASR progress during an active recording**, not just after completion.
 
 The previous 18-minute benchmark above used a different reference configuration; the two runs are **not a controlled performance comparison**. Neither alignment coverage nor backend operator counts measures recognition accuracy. See [November pipeline](NOVEMBER_2026_PIPELINE.md).
+
+## Developer-preview source tests
+
+The public repository now includes [synthetic tests](../../tests/test_toolkit.py) for exporter text preservation, mixed speaker flags, deterministic output, rejection on failed QA, source mismatch, and true log-timestamp progress. This is model-free validation of source behavior, not a recorded independent Vulkan/DirectML run on a new machine. Source tests and clean-install hardware acceptance are separate gates.

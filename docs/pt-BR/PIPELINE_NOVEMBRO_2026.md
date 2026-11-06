@@ -21,7 +21,7 @@ transcrever_pasta              # todos os compatíveis da pasta atual
 transcrever_pasta "/pasta"     # pasta especificada
 ~~~
 
-São funções do Git Bash **não incluídas no clone público**. A seleção de formatos aceita `.mkv`, `.mp4`, `.mp3` e `.ogg` via FFmpeg; **a validação real ponta a ponta desta etapa foi com MKV**. O lote é sequencial e não recursivo. Com Tab, o Bash completa nomes com espaços. O comando `transcrever_pasta` recebe uma pasta, não um arquivo. A documentação PowerShell/WhisperXGPU anterior permanece histórica.
+As funções do Git Bash agora têm [código-fonte de desenvolvimento publicado](../../scripts/gitbash_commands.sh), mas ainda não existe instalador público com as dependências externas de Vulkan, DirectML e o worker de diarização. A seleção de formatos aceita `.mkv`, `.mp4`, `.mp3` e `.ogg` via FFmpeg; **a validação real ponta a ponta desta etapa foi com MKV**. O lote é sequencial e não recursivo. Com Tab, o Bash completa nomes com espaços. O comando `transcrever_pasta` recebe uma pasta, não um arquivo. A documentação PowerShell/WhisperXGPU anterior permanece histórica.
 
 ## Evidência anônima de gravação real
 
@@ -54,3 +54,7 @@ O [AI-Assisted Design Engineering Operating System](https://github.com/nelsonsec
 Preservar ambientes Python isolados e recuperação CPU; validar Vulkan e DirectML separadamente; invalidar cache quando o perfil muda; evitar repetir QA já aprovado; não confundir cobertura com WER; mostrar progresso mensurado; manter somente um arquivo de entrega por gravação. Antes de lançar software público: auditar código/licenças/modelos, fixar versões, testar instalação limpa, formatos adicionais, retomada de lotes, esquema JSON e precisão humana.
 
 [Detalhes técnicos (inglês)](../en/NOVEMBER_2026_PIPELINE.md) · [Contrato de evidência](../en/FRAMEWORK_EVIDENCE_ADAPTER.md)
+
+## Fontes de desenvolvimento
+
+A nova estrutura contém [QA](../../src/n3lx_toolkit/qa_unificado.py), [monitor](../../src/n3lx_toolkit/monitor.py), [exportador](../../src/n3lx_toolkit/export_framework.py), [funções Bash](../../scripts/gitbash_commands.sh) e [testes sintéticos](../../tests/test_toolkit.py). O worker real do Community-1, os modelos e os ambientes continuam externos. [Guia de desenvolvimento](ESTRUTURA_DESENVOLVIMENTO.md).

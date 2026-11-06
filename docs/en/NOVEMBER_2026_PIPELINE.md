@@ -1,6 +1,6 @@
 # November 2026 reference: offline AMD GPU pipeline, unified QA, progress and evidence delivery
 
-> **Status:** validated on one Windows reference machine, not a public installer or shipped executable. This is a later local `NELX-Whisper-GPU` workflow and **does not replace the separate v1.0.0 local CLI** described in the existing documentation.
+> **Status:** validated on one Windows reference machine. Developer-preview first-party sources are now in this repository, but there is no complete public installer, exact validated diarization worker, downloaded model distribution or clean-machine QA. This is a later local `NELX-Whisper-GPU` workflow and **does not replace the separate v1.0.0 local CLI** described in the existing documentation.
 
 ## Architecture and reference configuration
 
@@ -27,7 +27,7 @@ transcrever_pasta                   # current directory, sequential
 transcrever_pasta "/path/to/media"  # specified directory
 ~~~
 
-The wrapper checks `.mkv`, `.mp4`, `.mp3`, `.ogg` extensions and passes compatible input to FFmpeg. **MKV has real end-to-end test coverage in this iteration**; the other extensions still require individual format regression. Folder processing is non-recursive, one source at a time, with per-file outcomes. Git Bash Tab completion works with escaped spaces after correct relative-path normalization. `transcrever_pasta` expects a directory, not a filename. The previous PowerShell 7 `whisperxgpu` examples remain historical/local; cloning this repository installs neither interface.
+The wrapper checks `.mkv`, `.mp4`, `.mp3`, `.ogg` extensions and passes compatible input to FFmpeg. **MKV has real end-to-end test coverage in this iteration**; the other extensions still require individual format regression. Folder processing is non-recursive, one source at a time, with per-file outcomes. Git Bash Tab completion works with escaped spaces after correct relative-path normalization. `transcrever_pasta` expects a directory, not a filename. The previous PowerShell 7 `whisperxgpu` examples remain historical/local; the Git Bash wrapper is now supplied as source, but cloning this repository does not automatically install either interface or their external GPU dependencies.
 
 ## The six-stage resumable QA
 
@@ -78,3 +78,9 @@ The [AI-Assisted Design Engineering Operating System](https://github.com/nelsons
 - No public software release until license/provenance review, sanitized sources and dependency locks, clean Windows install, all input formats and batch interruption testing, synthetic schema fixtures and human-reviewed text accuracy benchmarks.
 
 See [release criteria](RELEASE_CRITERIA.md), [validation](VALIDATION.md), [dependencies](DEPENDENCIES.md) and [earlier CLI reference](OUTPUTS_AND_CLI.md).
+
+## Source layout published as developer preview
+
+The source now includes [QA](../../src/n3lx_toolkit/qa_unificado.py), [monitor](../../src/n3lx_toolkit/monitor.py), [one-JSON exporter](../../src/n3lx_toolkit/export_framework.py), [Git Bash wrapper](../../scripts/gitbash_commands.sh) and [synthetic tests](../../tests/test_toolkit.py). The exact Windows-validated diarization worker is **not** silently replaced by a different source; it must be supplied as an external prerequisite. The published runner is therefore a developer candidate rather than a new hardware-verified release.
+
+[Developer setup](LOCAL_DEVELOPER_SETUP.md) · [Release gates](RELEASE_CRITERIA.md)
