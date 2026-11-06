@@ -15,6 +15,14 @@ All notable changes are tracked using [Conventional Commits](https://www.convent
 - Provide an English-first README, a Brazilian Portuguese entry point, CPU setup and troubleshooting.
 - Establish security, contributing, ignore-file and public release requirements.
 
+### November 2026 local reference — documented, not released
+
+- Capture a distinct AMD GPU local runner: Whisper large-v3/Vulkan `-bs 5`, Portuguese CTC word alignment and Community-1 ONNX/DirectML speaker diarization.
+- Record six-stage resumable QA, parameter-aware cache, end-to-end PASS and sanitized metrics from an anonymous 21-minute recording.
+- Document Git Bash single-file/sequential folder commands and a live progress dashboard based on real ASR timestamps.
+- Document one framework-oriented JSON per recording, private QA evidence separation and human-review authority boundaries.
+- Add bilingual learning notes, schema expectations and release blockers; **no local executable or private data is published**.
+
 ### Pending
 - Review/publish project and third-party licenses.
 - Audit and publish dependency locks, authorized model acquisition, installation scripts and source.

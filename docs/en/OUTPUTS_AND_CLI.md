@@ -2,6 +2,8 @@
 
 **Applicability:** currently configured local GPU application. The public repository does not yet distribute this CLI.
 
+> **Later local output contract (November 2026):** the Git Bash functions `transcrever`/`transcrever_pasta` wrap a six-stage resumable runner and create one framework JSON per recording under `transcricao/`. Technical logs and QA remain in separate private workspace storage. These functions and the exporter are not released in this repository. The options and Normal/Quality/Debug profiles **below** describe the **earlier local application**, not the new wrapper. See [new pipeline](NOVEMBER_2026_PIPELINE.md) and [adapter expectations](FRAMEWORK_EVIDENCE_ADAPTER.md).
+
 ## Example commands
 
 ```powershell

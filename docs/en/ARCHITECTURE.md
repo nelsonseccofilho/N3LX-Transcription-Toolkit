@@ -2,6 +2,8 @@
 
 The AMD reference workflow is **not conventional WhisperX with a `--device vulkan` flag**. It combines independently configured executables, models and Python environments.
 
+> **November 2026:** a distinct later local runner added cached six-stage QA, Beam Size 5, truthful Git Bash progress and framework-oriented JSON export. It is **not the same executable or publicly distributed implementation** as the older source map below. See [new reference](NOVEMBER_2026_PIPELINE.md).
+
 ## Pipeline
 
 ```text

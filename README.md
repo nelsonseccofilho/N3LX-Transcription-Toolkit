@@ -19,6 +19,14 @@ The resulting toolkit documents **two independent paths**:
 
 The operating framework inspired this project, but the Toolkit is useful independently for authorized interviews, lectures, meetings and media archives. It does **not** require the operating framework.
 
+## November 2026 — newer validated *local* workflow
+
+The later local AMD GPU reference adds **six-stage resumable QA**, `-bs 5`, Git Bash `transcrever` / `transcrever_pasta`, measured in-terminal progress and **one framework-oriented JSON per recording**. One anonymized 21-minute MKV passed end-to-end: 530 segments, 98.34% temporal word-alignment coverage and 99.90% automatic speaker assignment among aligned words. **These are not text accuracy or WER measurements.**
+
+Read the [November engineering record](docs/en/NOVEMBER_2026_PIPELINE.md), [private evidence adapter expectations](docs/en/FRAMEWORK_EVIDENCE_ADAPTER.md) and [Portuguese guide](docs/pt-BR/PIPELINE_NOVEMBRO_2026.md).
+
+**Important:** these newer functions are installed only on the configured reference machine; no public installer/source bundle is available here. The existing PowerShell commands and Normal/Quality/Debug flags below document an **earlier local application**, not this new Git Bash runner. The public-release gates remain open.
+
 ## Choose your environment
 
 | Path | Start here | Current public status |

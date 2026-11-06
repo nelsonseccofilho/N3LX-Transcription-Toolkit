@@ -9,6 +9,12 @@
 
 A GitHub repository containing documentation is not a downloadable software release. Do not tag a v1.0.0 software version prematurely.
 
+## November 2026 extension (local implementation only)
+
+A distinct later local runner completed six-stage end-to-end QA on an anonymous 21-minute MKV, with in-terminal live progress and one framework-oriented JSON output. **This does not change the public release status:** the newer runner, wrapper, monitor and exporter are not currently distributed or installable from this repository. Details: [November pipeline](NOVEMBER_2026_PIPELINE.md).
+
+Additional public-release gates: audit/sanitize latest sources, inspect dependency/model provenance and licenses, verify clean Windows/Git Bash install, test additional media formats and interrupted/resumed batches, publish synthetic JSON fixtures/schema tests, and measure human-reviewed transcription accuracy (WER) before claiming `-bs 5` improves quality.
+
 ## Public software release gates
 
 - [ ] Decide and publish license(s) for original project code and documentation.

@@ -65,3 +65,9 @@ After simulated regression tests, the **Normal** profile was run on a real 25-se
 The locally working implementation is not the same as a reproducible public release. The next milestones are source provenance, safe dependencies, licensing, clean installs, realistic samples, screenshots and accessible step-by-step guides.
 
 **Lesson:** share verified knowledge now; label unverified distribution steps clearly until they are tested.
+
+## 10 — November 2026: unified QA, honest progress and one evidence JSON
+
+A distinct later local workflow added a resumable six-stage QA across Vulkan ASR, DirectML CTC alignment and Community-1 diarization. The first unified run confirmed component PASS but final integration PENDING; a subsequent local runner added full word timing and speaker assignment and passed on both a short source and a 21-minute source. A preserved `-bs 1` baseline was separated from `-bs 5` via cache signature. No matched human-reviewed accuracy comparison was conducted.
+
+Git Bash `transcrever`/`transcrever_pasta` functions simplified operator workflow; an integrated monitor rendered real ASR progress instead of silently printing only stage completion. A project-specific adapter reduced routine output to one JSON per recording while retaining technical QA privately. The public repo remains documentation-first; no newer installer/runtime sources are included. See the [sanitized November engineering record](NOVEMBER_2026_PIPELINE.md).

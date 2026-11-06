@@ -2,6 +2,8 @@
 
 **Scope:** components observed in the functional local reference and development snapshots. This is **not** a fabricated package lock or a claim of a tested clean-machine installer. Exact installed versions, source revisions, hashes and redistributability must be captured before public software release.
 
+> **Later local observation (November 2026):** the new QA iteration used isolated model-export and DirectML inference environments, a local Vulkan whisper.cpp build and the Portuguese `jonatasgrosman/wav2vec2-large-xlsr-53-portuguese` CTC source. `onnxruntime-directml==1.24.4` was observed in one local environment; this does **not** constitute a tested, redistributed dependency lock or an install recipe. Models stay outside public Git. See [November reference](NOVEMBER_2026_PIPELINE.md).
+
 ## Operating system and hardware
 
 | Requirement | Reference / purpose | Confidence |

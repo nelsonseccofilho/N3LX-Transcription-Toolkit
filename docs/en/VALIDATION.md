@@ -54,3 +54,21 @@ Do not silently invent missing words or force uncertain speaker labels.
 - License/security review before publishing installers or model distribution.
 
 Preserve the original media to review consequential decisions and timestamps. Never publish sensitive meeting material as test data.
+
+## November 2026 — distinct newer runner and real end-to-end QA
+
+An anonymized **1,262.891-second MKV** passed all six local QA stages: preflight, 16 kHz PCM extraction, 2/3-second CTC/DirectML numerical check, ASR/Vulkan, Community-1 diarization/DirectML and final CTC alignment + speaker assignment. The initial CTC check **does not** prove per-word timestamps.
+
+| Measure | Observed |
+| --- | ---: |
+| ASR | 562.92 seconds, 530 segments |
+| Diarization | 61.86 seconds, 477 regular and 487 exclusive intervals |
+| Final integration | 133.19 seconds, 530 segments |
+| Word tokens / time-aligned | 3,202 / 3,149 (**98.34% coverage**) |
+| Time-aligned words with speaker | 3,146 / 3,149 (**99.90% automatic coverage**) |
+| Sum of recorded stage durations | about 784 seconds (13 min 04 s) |
+| Result | **6/6 PASS — `QA_END_TO_END_PASS`** |
+
+This newer runner used `-bs 5` after preserving `-bs 1` and separating its cache fingerprint. No matched human-reviewed WER comparison was made. Numeric tokens and very short windows can remain unaligned; diarization inside a segment may be mixed. A new Git Bash progress dashboard was visually observed showing **3/6 stages and 11.4% ASR progress during an active recording**, not just after completion.
+
+The previous 18-minute benchmark above used a different reference configuration; the two runs are **not a controlled performance comparison**. Neither alignment coverage nor backend operator counts measures recognition accuracy. See [November pipeline](NOVEMBER_2026_PIPELINE.md).

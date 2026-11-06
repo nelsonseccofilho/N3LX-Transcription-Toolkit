@@ -12,6 +12,14 @@ Por isso, desenvolvi e validei progressivamente um pipeline que combina **whispe
 
 O Operating System motivou essa solução, mas **não é obrigatório para usar o Toolkit**. A ferramenta poderá apoiar entrevistas, aulas, reuniões e gravações autorizadas.
 
+## Evolução local de novembro/2026
+
+A versão local mais recente validou **Whisper large-v3/Vulkan (Beam Size 5)**, alinhamento e diarização **ONNX/DirectML**, seis etapas de QA com cache e monitor de progresso integrado ao Git Bash. A entrega rotineira passou a ser **um JSON para o framework por gravação**. Em uma mídia anônima de 21 minutos, foram 530 segmentos, 98,34% de cobertura de timestamps e 99,90% de atribuição automática entre as palavras alinhadas. **Isso não representa precisão do texto.**
+
+Os comandos `transcrever` e `transcrever_pasta` existem somente na instalação local. O repositório continua **sem instalador público**; os comandos PowerShell abaixo descrevem outra implementação anterior.
+
+[Leia os aprendizados em português](PIPELINE_NOVEMBRO_2026.md) · [Referência técnica em inglês](../en/NOVEMBER_2026_PIPELINE.md)
+
 ## Equipamento em que realizamos os testes
 
 | Componente | Configuração |

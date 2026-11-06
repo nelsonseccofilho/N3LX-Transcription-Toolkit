@@ -2,6 +2,8 @@
 
 **Status:** commands used in the local AMD GPU v1.0 workflow. The batch loop was observed starting correctly on a real folder containing seven MKV files. Completion of that entire seven-file batch has not yet been independently verified. **This is not a native batch mode inside `whisperxgpu`.** The GPU application is currently installed only on the reference Windows machine; the public repository does not yet include its installer.
 
+> **November 2026 local alternative:** a separately configured **Git Bash** wrapper provides `transcrever recording.mkv` for one input and `transcrever_pasta` for sequential, non-recursive processing of the current folder. It filters `.mkv/.mp4/.mp3/.ogg`, exposes live status/progress and exports one `*.framework.json` per file, while QA/cache stays private. **Only MKV has full end-to-end media validation in this cycle.** This is **not** a public install; the PowerShell examples below remain the earlier application's behavior. [Details](NOVEMBER_2026_PIPELINE.md).
+
 ## Before running
 
 1. Open **PowerShell 7** in the folder containing your media files.
